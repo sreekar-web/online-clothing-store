@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Dear Me</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-pattern {
+            background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .team-member:hover img {
+            transform: scale(1.05);
+        }
+        
+        .values-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 40px;
+            height: calc(100% - 40px);
+            width: 2px;
+            background-color: #f9a8d4;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-heart text-2xl text-pink-500"></i>
+                <h1 class="text-2xl font-bold text-gray-800">Dear Me</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Home</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Women</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Men</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Accessories</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">New Arrivals</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-600 hover:text-pink-500">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="cart.html" class="text-gray-600 hover:text-pink-500 relative">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                </a>
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern relative py-32 text-white">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Story</h1>
+            <p class="text-xl max-w-3xl mx-auto">Celebrating individuality through curated fashion that makes you feel like the best version of yourself.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Dear Me Store" 
+                         class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">Welcome to Dear Me</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Founded in 2015, Dear Me began as a small boutique in New York City with a simple mission: to help people discover clothing that makes them feel confident and authentic. What started as a passion project has grown into a beloved destination for those who value quality, craftsmanship, and personal style.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our name, "Dear Me," reflects our philosophy - that getting dressed should be an act of self-love. Each piece in our collection is carefully selected to help you express your unique personality while feeling comfortable and empowered.
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-pink-100 text-pink-800 px-4 py-2 rounded-full font-medium">
+                            <i class="fas fa-map-marker-alt mr-2"></i> 3 Locations
+                        </div>
+                        <div class="bg-pink-100 text-pink-800 px-4 py-2 rounded-full font-medium">
+                            <i class="fas fa-users mr-2"></i> 50+ Team Members
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">Our Core Values</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">These principles guide everything we do at Dear Me</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Value 1 -->
+                <div class="values-card bg-white p-8 rounded-lg shadow-md transition-all duration-300">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-star text-2xl text-pink-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Quality First</h3>
+                    <p class="text-gray-600">
+                        We meticulously vet every brand and item in our collection to ensure exceptional craftsmanship and durability. Our buyers travel the world to discover the finest materials and most talented designers.
+                    </p>
+                </div>
+                
+                <!-- Value 2 -->
+                <div class="values-card bg-white p-8 rounded-lg shadow-md transition-all duration-300">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-leaf text-2xl text-pink-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Sustainable Practices</h3>
+                    <p class="text-gray-600">
+                        We're committed to reducing fashion's environmental impact. 65% of our collection comes from sustainable sources, and we've eliminated single-use plastics from our packaging and operations.
+                    </p>
+                </div>
+                
+                <!-- Value 3 -->
+                <div class="values-card bg-white p-8 rounded-lg shadow-md transition-all duration-300">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heart text-2xl text-pink-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Inclusive Style</h3>
+                    <p class="text-gray-600">
+                        Fashion should be for everyone. Our collections range from sizes XXS to 3X, and our stylists are trained to help every body type find flattering, confidence-boosting outfits.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Timeline -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">Our Journey</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Key milestones in the Dear Me story</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item relative pl-16 pb-12">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center text-white">
+                        <i class="fas fa-store text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">2015 - Humble Beginnings</h3>
+                    <p class="text-gray-600">
+                        Dear Me opens its first 800 sq ft boutique in Manhattan's Lower East Side. Founder Emily Chen personally selects every item in the initial collection.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item relative pl-16 pb-12">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center text-white">
+                        <i class="fas fa-laptop text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">2017 - Online Expansion</h3>
+                    <p class="text-gray-600">
+                        We launch our e-commerce platform, allowing customers across the U.S. to experience Dear Me's curated collections. Our first viral social media campaign reaches 2M+ people.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item relative pl-16 pb-12">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center text-white">
+                        <i class="fas fa-award text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">2019 - Industry Recognition</h3>
+                    <p class="text-gray-600">
+                        Vogue names Dear Me one of "10 Boutiques Changing the Fashion Game." We open our second location in Brooklyn and launch our first exclusive designer collaboration.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item relative pl-16 pb-12">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center text-white">
+                        <i class="fas fa-globe-americas text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">2021 - Sustainable Shift</h3>
+                    <p class="text-gray-600">
+                        We commit to sustainability, transitioning 60% of our inventory to eco-friendly materials and launching our clothing recycling program.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item relative pl-16">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center text-white">
+                        <i class="fas fa-flag text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">2023 - Looking Ahead</h3>
+                    <p class="text-gray-600">
+                        With our third store opening in Los Angeles and plans for international shipping, we're excited to bring the Dear Me experience to more people worldwide.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Team -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">Meet Our Founders</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">The passionate team behind Dear Me</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-member bg-white rounded-lg overflow-hidden shadow-md text-center">
+                    <div class="overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
+                             alt="Emily Chen" 
+                             class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-gray-800">Emily Chen</h3>
+                        <p class="text-pink-500 font-medium mb-3">Founder & CEO</p>
+                        <p class="text-gray-600">
+                            Former fashion editor turned entrepreneur, Emily's eye for style and commitment to quality define the Dear Me aesthetic.
+                        </p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member bg-white rounded-lg overflow-hidden shadow-md text-center">
+                    <div class="overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Marcus Johnson" 
+                             class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-gray-800">Marcus Johnson</h3>
+                        <p class="text-pink-500 font-medium mb-3">Creative Director</p>
+                        <p class="text-gray-600">
+                            With 15 years in fashion design, Marcus ensures every Dear Me collection tells a cohesive, inspiring story.
+                        </p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member bg-white rounded-lg overflow-hidden shadow-md text-center">
+                    <div class="overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
+                             alt="Sophia Rodriguez" 
+                             class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-gray-800">Sophia Rodriguez</h3>
+                        <p class="text-pink-500 font-medium mb-3">Head of Sustainability</p>
+                        <p class="text-gray-600">
+                            A former environmental scientist, Sophia leads our initiatives to make fashion more eco-conscious.
+                        </p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-member bg-white rounded-lg overflow-hidden shadow-md text-center">
+                    <div class="overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="David Kim" 
+                             class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-gray-800">David Kim</h3>
+                        <p class="text-pink-500 font-medium mb-3">Director of Retail</p>
+                        <p class="text-gray-600">
+                            David creates the welcoming, personalized shopping experience that defines our stores.
+                        </p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-pink-500"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white font-medium rounded-lg transition-colors">
+                    Meet the Full Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Us -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">Visit Our Stores</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Experience the Dear Me difference in person at one of our beautifully designed locations. Our expert stylists are ready to help you discover pieces you'll love.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <!-- Location 1 -->
+                        <div class="flex items-start">
+                            <div class="bg-pink-100 text-pink-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1 text-gray-800">New York Flagship</h3>
+                                <p class="text-gray-600 mb-2">123 Fashion Avenue, New York, NY 10001</p>
+                                <p class="text-gray-500"><i class="far fa-clock mr-2"></i> Mon-Sat: 10AM-8PM, Sun: 11AM-6PM</p>
+                                <a href="#" class="inline-block mt-2 text-pink-500 hover:text-pink-600 font-medium">
+                                    Get Directions <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Location 2 -->
+                        <div class="flex items-start">
+                            <div class="bg-pink-100 text-pink-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1 text-gray-800">Brooklyn</h3>
+                                <p class="text-gray-600 mb-2">456 Trend Street, Brooklyn, NY 11201</p>
+                                <p class="text-gray-500"><i class="far fa-clock mr-2"></i> Mon-Sat: 10AM-7PM, Sun: 11AM-5PM</p>
+                                <a href="#" class="inline-block mt-2 text-pink-500 hover:text-pink-600 font-medium">
+                                    Get Directions <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Location 3 -->
+                        <div class="flex items-start">
+                            <div class="bg-pink-100 text-pink-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1 text-gray-800">Los Angeles</h3>
+                                <p class="text-gray-600 mb-2">789 Style Boulevard, Los Angeles, CA 90015</p>
+                                <p class="text-gray-500"><i class="far fa-clock mr-2"></i> Mon-Sat: 10AM-8PM, Sun: 11AM-6PM</p>
+                                <a href="#" class="inline-block mt-2 text-pink-500 hover:text-pink-600 font-medium">
+                                    Get Directions <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="rounded-lg overflow-hidden shadow-xl h-full">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256018327!2d-73.9878449245376!3d40.74844097138958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1689874575839!5m2!1sen!2sus" 
+                            width="100%" 
+                            height="100%" 
+                            style="min-height: 400px; border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-pink-500 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">Join Our Community</h3>
+            <p class="max-w-2xl mx-auto mb-8">Subscribe to our newsletter for styling tips, exclusive offers, and first access to new collections.</p>
+            
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l focus:outline-none text-gray-800">
+                <button class="bg-black text-white px-6 py-3 rounded-r hover:bg-gray-900 transition-colors">
+                    Subscribe
+                </button>
+            </div>
+            
+            <p class="text-sm mt-4 opacity-80">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-heart text-2xl text-pink-400"></i>
+                        <h4 class="text-xl font-bold">Dear Me</h4>
+                    </div>
+                    <p class="text-gray-400 mb-4">Celebrating your unique style with curated designer fashion.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Shop</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Women</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Men</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Customer Service</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Authenticity Guarantee</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold text-lg mb-4">About</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Our Story</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sustainability</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Dear Me. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <img src="https://via.placeholder.com/50x30?text=VISA" alt="Visa" class="h-8">
+                    <img src="https://via.placeholder.com/50x30?text=MC" alt="Mastercard" class="h-8">
+                    <img src="https://via.placeholder.com/50x30?text=AMEX" alt="American Express" class="h-8">
+                    <img src="https://via.placeholder.com/50x30?text=PP" alt="PayPal" class="h-8">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for team member cards
+        document.querySelectorAll('.team-member').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('img').style.transform = 'scale(1.05)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('img').style.transform = 'scale(1)';
+            });
+        });
+        
+        // Simple animation for values cards
+        document.querySelectorAll('.values-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>

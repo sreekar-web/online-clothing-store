@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Dear Me</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .payment-method:hover .payment-radio {
+            border-color: #ec4899;
+        }
+        
+        .payment-radio:checked + .payment-label {
+            border-color: #ec4899;
+            box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.2);
+        }
+        
+        .input-field:focus {
+            box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.2);
+        }
+        
+        .tab-button.active {
+            color: #ec4899;
+            border-bottom: 2px solid #ec4899;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-heart text-2xl text-pink-500"></i>
+                <h1 class="text-2xl font-bold text-gray-800">Dear Me</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Home</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Women</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Men</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Accessories</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">New Arrivals</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-600 hover:text-pink-500">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="cart.html" class="text-gray-600 hover:text-pink-500 relative">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                </a>
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center text-sm text-gray-600">
+                <a href="#" class="hover:text-pink-500">Home</a>
+                <span class="mx-2">/</span>
+                <a href="cart.html" class="hover:text-pink-500">Cart</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-500">Checkout</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl font-bold mb-8">Checkout</h2>
+        
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Checkout Form -->
+            <div class="lg:w-2/3">
+                <!-- Checkout Tabs -->
+                <div class="flex border-b border-gray-200 mb-8">
+                    <button class="tab-button active px-4 py-3 font-medium">Shipping</button>
+                    <button class="tab-button px-4 py-3 font-medium text-gray-500">Payment</button>
+                    <button class="tab-button px-4 py-3 font-medium text-gray-500">Review</button>
+                </div>
+                
+                <!-- Shipping Form -->
+                <div id="shipping-form" class="bg-white rounded-lg shadow-sm p-6">
+                    <h4 class="font-bold text-lg mb-6">Shipping Information</h4>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                            <input type="text" id="first-name" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                        </div>
+                        <div>
+                            <label for="last-name" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                            <input type="text" id="last-name" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                            <input type="text" id="address" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                        </div>
+                        <div>
+                            <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                            <input type="text" id="city" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                        </div>
+                        <div>
+                            <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                            <select id="country" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                                <option>United States</option>
+                                <option>Canada</option>
+                                <option>United Kingdom</option>
+                                <option>Australia</option>
+                                <option>Germany</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="state" class="block text-sm font-medium text-gray-700 mb-1">State/Province</label>
+                            <input type="text" id="state" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                        </div>
+                        <div>
+                            <label for="zip" class="block text-sm font-medium text-gray-700 mb-1">ZIP/Postal Code</label>
+                            <input type="text" id="zip" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-lg mb-4">Shipping Method</h4>
+                        <div class="space-y-4">
+                            <label class="flex items-center space-x-4 p-4 border border-gray-200 rounded cursor-pointer hover:border-pink-500">
+                                <input type="radio" name="shipping" checked class="h-5 w-5 text-pink-500 focus:ring-pink-500">
+                                <div class="flex-grow">
+                                    <div class="flex justify-between">
+                                        <span class="font-medium">Standard Shipping</span>
+                                        <span class="font-medium">Free</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Delivery in 5-7 business days</p>
+                                </div>
+                            </label>
+                            <label class="flex items-center space-x-4 p-4 border border-gray-200 rounded cursor-pointer hover:border-pink-500">
+                                <input type="radio" name="shipping" class="h-5 w-5 text-pink-500 focus:ring-pink-500">
+                                <div class="flex-grow">
+                                    <div class="flex justify-between">
+                                        <span class="font-medium">Express Shipping</span>
+                                        <span class="font-medium">$14.99</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Delivery in 2-3 business days</p>
+                                </div>
+                            </label>
+                            <label class="flex items-center space-x-4 p-4 border border-gray-200 rounded cursor-pointer hover:border-pink-500">
+                                <input type="radio" name="shipping" class="h-5 w-5 text-pink-500 focus:ring-pink-500">
+                                <div class="flex-grow">
+                                    <div class="flex justify-between">
+                                        <span class="font-medium">Next Day Shipping</span>
+                                        <span class="font-medium">$29.99</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Delivery by tomorrow</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-lg mb-4">Billing Information</h4>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" checked class="h-5 w-5 text-pink-500 focus:ring-pink-500">
+                            <span>Same as shipping information</span>
+                        </label>
+                    </div>
+                    
+                    <div class="mt-8 flex justify-between">
+                        <a href="cart.html" class="flex items-center text-pink-500 hover:text-pink-600">
+                            <i class="fas fa-chevron-left mr-2"></i>
+                            Return to Cart
+                        </a>
+                        <button id="continue-to-payment" class="px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white font-medium rounded transition-colors">
+                            Continue to Payment
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Payment Form (Hidden by default) -->
+                <div id="payment-form" class="bg-white rounded-lg shadow-sm p-6 hidden">
+                    <h4 class="font-bold text-lg mb-6">Payment Method</h4>
+                    
+                    <div class="space-y-4 mb-8">
+                        <label class="payment-method flex items-center space-x-4 p-4 border border-gray-200 rounded cursor-pointer">
+                            <input type="radio" name="payment" checked class="payment-radio h-5 w-5 text-pink-500 focus:ring-pink-500">
+                            <div class="payment-label flex-grow">
+                                <div class="flex items-center">
+                                    <i class="far fa-credit-card text-xl mr-3"></i>
+                                    <span class="font-medium">Credit/Debit Card</span>
+                                </div>
+                            </div>
+                        </label>
+                        
+                        <label class="payment-method flex items-center space-x-4 p-4 border border-gray-200 rounded cursor-pointer">
+                            <input type="radio" name="payment" class="payment-radio h-5 w-5 text-pink-500 focus:ring-pink-500">
+                            <div class="payment-label flex-grow">
+                                <div class="flex items-center">
+                                    <i class="fab fa-paypal text-xl mr-3 text-blue-500"></i>
+                                    <span class="font-medium">PayPal</span>
+                                </div>
+                            </div>
+                        </label>
+                        
+                        <label class="payment-method flex items-center space-x-4 p-4 border border-gray-200 rounded cursor-pointer">
+                            <input type="radio" name="payment" class="payment-radio h-5 w-5 text-pink-500 focus:ring-pink-500">
+                            <div class="payment-label flex-grow">
+                                <div class="flex items-center">
+                                    <i class="fas fa-university text-xl mr-3 text-gray-600"></i>
+                                    <span class="font-medium">Bank Transfer</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Credit Card Form -->
+                    <div id="credit-card-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="card-number" class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                            </div>
+                            <div>
+                                <label for="card-name" class="block text-sm font-medium text-gray-700 mb-1">Name on Card</label>
+                                <input type="text" id="card-name" placeholder="John Smith" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                            </div>
+                            <div>
+                                <label for="card-expiry" class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                                <input type="text" id="card-expiry" placeholder="MM/YY" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                            </div>
+                            <div>
+                                <label for="card-cvv" class="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                                <input type="text" id="card-cvv" placeholder="123" class="input-field w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500">
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center mb-6">
+                            <input type="checkbox" id="save-card" class="h-5 w-5 text-pink-500 focus:ring-pink-500">
+                            <label for="save-card" class="ml-2 text-sm text-gray-700">Save this card for future purchases</label>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex justify-between">
+                        <button id="back-to-shipping" class="flex items-center text-pink-500 hover:text-pink-600">
+                            <i class="fas fa-chevron-left mr-2"></i>
+                            Back to Shipping
+                        </button>
+                        <button id="review-order" class="px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white font-medium rounded transition-colors">
+                            Review Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Review Order (Hidden by default) -->
+                <div id="review-order-section" class="bg-white rounded-lg shadow-sm p-6 hidden">
+                    <h4 class="font-bold text-lg mb-6">Review Your Order</h4>
+                    
+                    <div class="mb-8">
+                        <h5 class="font-medium text-gray-700 mb-2">Shipping Information</h5>
+                        <div id="review-shipping" class="text-gray-600">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        <button id="edit-shipping" class="mt-2 text-pink-500 hover:text-pink-600 text-sm">Edit</button>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h5 class="font-medium text-gray-700 mb-2">Payment Method</h5>
+                        <div id="review-payment" class="text-gray-600">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        <button id="edit-payment" class="mt-2 text-pink-500 hover:text-pink-600 text-sm">Edit</button>
+                    </div>
+                    
+                    <div class="border-t border-gray-200 pt-6">
+                        <h5 class="font-medium text-gray-700 mb-4">Order Items</h5>
+                        <div class="space-y-4">
+                            <!-- Order Item 1 -->
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-gray-100 rounded mr-4 overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Silk Evening Gown" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-grow">
+                                    <h6 class="font-medium">Silk Evening Gown</h6>
+                                    <p class="text-sm text-gray-500">Size: M, Color: Black</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-medium">$1,299.00</p>
+                                    <p class="text-sm text-gray-500">Qty: 1</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Order Item 2 -->
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-gray-100 rounded mr-4 overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Linen Midi Dress" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-grow">
+                                    <h6 class="font-medium">Linen Midi Dress</h6>
+                                    <p class="text-sm text-gray-500">Size: S, Color: Beige</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-medium">$599.00</p>
+                                    <p class="text-sm text-gray-500">Qty: 2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <label class="flex items-start space-x-2">
+                            <input type="checkbox" required class="h-5 w-5 text-pink-500 focus:ring-pink-500 mt-1">
+                            <span>I agree to the <a href="#" class="text-pink-500 hover:underline">Terms of Service</a> and <a href="#" class="text-pink-500 hover:underline">Privacy Policy</a></span>
+                        </label>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <button id="place-order" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-4 rounded transition-colors">
+                            Place Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Order Summary -->
+            <div class="lg:w-1/3">
+                <div class="bg-white rounded-lg shadow-sm p-6 sticky top-24">
+                    <h4 class="font-bold text-lg mb-6">Order Summary</h4>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Subtotal (3 items)</span>
+                            <span class="font-medium">$2,497.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Shipping</span>
+                            <span class="font-medium">Free</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Tax</span>
+                            <span class="font-medium">$224.73</span>
+                        </div>
+                        <div class="flex justify-between border-t border-gray-200 pt-4 mt-2">
+                            <span class="font-bold">Total</span>
+                            <span class="font-bold text-xl">$2,721.73</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Promo Code -->
+                    <div class="mt-6">
+                        <label for="promo-code" class="block text-sm font-medium text-gray-700 mb-1">Promo Code</label>
+                        <div class="flex">
+                            <input type="text" id="promo-code" placeholder="Enter code" class="flex-grow px-4 py-2 border border-gray-300 rounded-l focus:outline-none focus:border-pink-500">
+                            <button class="px-4 py-2 bg-gray-800 text-white rounded-r hover:bg-gray-900 transition-colors">
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Order Items -->
+                    <div class="mt-8 border-t border-gray-200 pt-6">
+                        <h5 class="font-medium text-gray-700 mb-4">Your Items</h5>
+                        <div class="space-y-4">
+                            <!-- Item 1 -->
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-gray-100 rounded mr-4 overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Silk Evening Gown" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h6 class="font-medium">Silk Evening Gown</h6>
+                                    <p class="text-sm text-gray-500">Qty: 1</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 2 -->
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-gray-100 rounded mr-4 overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Linen Midi Dress" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h6 class="font-medium">Linen Midi Dress</h6>
+                                    <p class="text-sm text-gray-500">Qty: 2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Secure Checkout -->
+                    <div class="mt-6 flex items-center text-sm text-gray-500">
+                        <i class="fas fa-lock text-pink-500 mr-2"></i>
+                        <span>Secure Checkout</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-pink-500 text-white mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">Join Our Exclusive Community</h3>
+            <p class="max-w-2xl mx-auto mb-8">Subscribe to our newsletter for early access to new arrivals, private sales, and style inspiration from our fashion experts.</p>
+            
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l focus:outline-none text-gray-800">
+                <button class="bg-black text-white px-6 py-3 rounded-r hover:bg-gray-900 transition-colors">
+                    Subscribe
+                </button>
+            </div>
+            
+            <p class="text-sm mt-4 opacity-80">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-heart text-2xl text-pink-400"></i>
+                        <h4 class="text-xl font-bold">Dear Me</h4>
+                    </div>
+                    <p class="text-gray-400 mb-4">Celebrating your unique style with curated designer fashion.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Shop</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Women</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Men</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Customer Service</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Authenticity Guarantee</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold text-lg mb-4">About</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Our Story</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sustainability</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Dear Me. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <img src="https://via.placeholder.com/50x30?text=VISA" alt="Visa" class="h-8">
+                    <img src="https://via.placeholder.com/50x30?text=MC" alt="Mastercard" class="h-8">
+                    <img src="https://via.placeholder.com/50x30?text=AMEX" alt="American Express" class="h-8">
+                    <img src="https://via.placeholder.com/50x30?text=PP" alt="PayPal" class="h-8">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Checkout Process Navigation
+        document.getElementById('continue-to-payment').addEventListener('click', function() {
+            document.getElementById('shipping-form').classList.add('hidden');
+            document.getElementById('payment-form').classList.remove('hidden');
+            
+            // Update tabs
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+                button.classList.add('text-gray-500');
+            });
+            document.querySelectorAll('.tab-button')[1].classList.add('active');
+            document.querySelectorAll('.tab-button')[1].classList.remove('text-gray-500');
+        });
+        
+        document.getElementById('back-to-shipping').addEventListener('click', function() {
+            document.getElementById('payment-form').classList.add('hidden');
+            document.getElementById('shipping-form').classList.remove('hidden');
+            
+            // Update tabs
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+                button.classList.add('text-gray-500');
+            });
+            document.querySelectorAll('.tab-button')[0].classList.add('active');
+            document.querySelectorAll('.tab-button')[0].classList.remove('text-gray-500');
+        });
+        
+        document.getElementById('review-order').addEventListener('click', function() {
+            document.getElementById('payment-form').classList.add('hidden');
+            document.getElementById('review-order-section').classList.remove('hidden');
+            
+            // Update tabs
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+                button.classList.add('text-gray-500');
+            });
+            document.querySelectorAll('.tab-button')[2].classList.add('active');
+            document.querySelectorAll('.tab-button')[2].classList.remove('text-gray-500');
+            
+            // Populate review sections
+            const shippingInfo = `
+                <p>John Doe</p>
+                <p>123 Fashion Street</p>
+                <p>New York, NY 10001</p>
+                <p>United States</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Shipping Method: Standard Shipping (Free)</p>
+            `;
+            document.getElementById('review-shipping').innerHTML = shippingInfo;
+            
+            const paymentInfo = `
+                <p>Credit Card ending in 4242</p>
+                <p>Expires 12/25</p>
+            `;
+            document.getElementById('review-payment').innerHTML = paymentInfo;
+        });
+        
+        document.getElementById('edit-shipping').addEventListener('click', function() {
+            document.getElementById('review-order-section').classList.add('hidden');
+            document.getElementById('shipping-form').classList.remove('hidden');
+            
+            // Update tabs
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+                button.classList.add('text-gray-500');
+            });
+            document.querySelectorAll('.tab-button')[0].classList.add('active');
+            document.querySelectorAll('.tab-button')[0].classList.remove('text-gray-500');
+        });
+        
+        document.getElementById('edit-payment').addEventListener('click', function() {
+            document.getElementById('review-order-section').classList.add('hidden');
+            document.getElementById('payment-form').classList.remove('hidden');
+            
+            // Update tabs
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+                button.classList.add('text-gray-500');
+            });
+            document.querySelectorAll('.tab-button')[1].classList.add('active');
+            document.querySelectorAll('.tab-button')[1].classList.remove('text-gray-500');
+        });
+        
+        // Place Order
+        document.getElementById('place-order').addEventListener('click', function() {
+            alert('Thank you for your order! Your items will be shipped soon.');
+            // In a real implementation, this would submit the form to the server
+        });
+        
+        // Tab Navigation
+        document.querySelectorAll('.tab-button').forEach((button, index) => {
+            button.addEventListener('click', function() {
+                if (index === 0) {
+                    document.getElementById('review-order-section').classList.add('hidden');
+                    document.getElementById('payment-form').classList.add('hidden');
+                    document.getElementById('shipping-form').classList.remove('hidden');
+                } else if (index === 1) {
+                    document.getElementById('review-order-section').classList.add('hidden');
+                    document.getElementById('shipping-form').classList.add('hidden');
+                    document.getElementById('payment-form').classList.remove('hidden');
+                } else if (index === 2) {
+                    document.getElementById('shipping-form').classList.add('hidden');
+                    document.getElementById('payment-form').classList.add('hidden');
+                    document.getElementById('review-order-section').classList.remove('hidden');
+                }
+                
+                // Update tabs
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.classList.add('text-gray-500');
+                });
+                button.classList.add('active');
+                button.classList.remove('text-gray-500');
+            });
+        });
+        
+        // Payment Method Selection
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'credit-card') {
+                    document.getElementById('credit-card-form').classList.remove('hidden');
+                } else {
+                    document.getElementById('credit-card-form').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

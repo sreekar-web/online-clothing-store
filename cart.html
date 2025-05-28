@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | Dear Me</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cart-item:hover .remove-item {
+            opacity: 1;
+        }
+        
+        .remove-item {
+            transition: opacity 0.2s ease;
+            opacity: 0;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .promo-input:focus + .promo-btn {
+            border-color: #ec4899;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-heart text-2xl text-pink-500"></i>
+                <h1 class="text-2xl font-bold text-gray-800">Dear Me</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Home</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Women</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Men</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">Accessories</a>
+                <a href="#" class="text-gray-800 hover:text-pink-500 font-medium">New Arrivals</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-600 hover:text-pink-500">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="cart.html" class="text-gray-600 hover:text-pink-500 relative">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                </a>
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center text-sm text-gray-600">
+                <a href="#" class="hover:text-pink-500">Home</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-500">Your Cart</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl font-bold mb-8">Your Shopping Cart</h2>
+        
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Cart Items -->
+            <div class="lg:w-2/3">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <!-- Cart Header -->
+                    <div class="hidden md:grid grid-cols-12 gap-4 border-b border-gray-200 pb-4 mb-4">
+                        <div class="col-span-5 font-medium text-gray-600">PRODUCT</div>
+                        <div class="col-span-2 font-medium text-gray-600">PRICE</div>
+                        <div class="col-span-3 font-medium text-gray-600">QUANTITY</div>
+                        <div class="col-span-2 font-medium text-gray-600 text-right">TOTAL</div>
+                    </div>
+                    
+                    <!-- Cart Items List -->
+                    <div id="cart-items-list" class="space-y-6">
+                        <!-- Cart Item 1 -->
+                        <div class="cart-item grid grid-cols-1 md:grid-cols-12 gap-4 border-b border-gray-200 pb-6">
+                            <div class="md:col-span-5 flex items-center">
+                                <div class="w-24 h-24 bg-gray-100 rounded mr-4 overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Silk Evening Gown" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Silk Evening Gown</h4>
+                                    <p class="text-sm text-gray-500">Gucci</p>
+                                    <p class="text-sm text-gray-500 mt-1">Size: M</p>
+                                    <p class="text-sm text-gray-500">Color: Black</p>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2 flex items-center">
+                                <span class="font-medium">$1,299.00</span>
+                            </div>
+                            <div class="md:col-span-3 flex items-center">
+                                <div class="flex items-center border border-gray-200 rounded">
+                                    <button class="quantity-btn px-3 py-1 text-gray-500 hover:bg-gray-100">-</button>
+                                    <span class="px-4">1</span>
+                                    <button class="quantity-btn px-3 py-1 text-gray-500 hover:bg-gray-100">+</button>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2 flex items-center justify-between">
+                                <span class="font-medium md:text-right">$1,299.00</span>
+                                <button class="remove-item ml-4 text-gray-400 hover:text-red-500">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Cart Item 2 -->
+                        <div class="cart-item grid grid-cols-1 md:grid-cols-12 gap-4 border-b border-gray-200 pb-6">
+                            <div class="md:col-span-5 flex items-center">
+                                <div class="w-24 h-24 bg-gray-100 rounded mr-4 overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Linen Midi Dress" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Linen Midi Dress</h4>
+                                    <p class="text-sm text-gray-500">Prada</p>
+                                    <p class="text-sm text-gray-500 mt-1">Size: S</p>
+                                    <p class="text-sm text-gray-500">Color: Beige</p>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2 flex items-center">
+                                <div>
+                                    <span class="text-red-500 line-through mr-2">$750.00</span>
+                                    <span class="font-medium">$599.00</span>
+                                </div>
+                            </div>
+                            <div class="md:col-span-3 flex items-center">
+                                <div class="flex items-center border border-gray-200 rounded">
+                                    <button class="quantity-btn px-3 py-1 text-gray-500 hover:bg-gray-100">-</button>
+                                    <span class="px-4">2</span>
+                                    <button class="quantity-btn px-3 py-1 text-gray-500 hover:bg-gray-100">+</button>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2 flex items-center justify-between">
+                                <span class="font-medium md:text-right">$1,198.00</span>
+                                <button class="remove-item ml-4 text-gray-400 hover:text-red-500">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Empty Cart State -->
+                    <div id="empty-cart" class="hidden py-12 text-center">
+                        <i class="fas fa-shopping-bag text-4xl text-gray-300 mb-4"></i>
+                        <h4 class="text-xl font-medium text-gray-500 mb-2">Your cart is empty</h4>
+                        <p class="text-gray-500 mb-6">Looks like you haven't added anything to your cart yet</p>
+                        <a href="#" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-6 rounded transition-colors">
+                            Continue Shopping
+                        </a>
+                    </div>
+                    
+                    <!-- Cart Actions -->
+                    <div class="flex flex-col sm:flex-row justify-between items-center mt-8">
+                        <a href="#" class="flex items-center text-pink-500 hover:text-pink-600 mb-4 sm:mb-0">
+                            <i class="fas fa-chevron-left mr-2"></i>
+                            Continue Shopping
+                        </a>
+                        <button id="update-cart" class="px-6 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-colors">
+                            Update Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Promo Code -->
+                <div class="bg-white rounded-lg shadow-sm p-6 mt-6">
+                    <h4 class="font-bold text-lg mb-4">Promo Code</h4>
+                    <p class="text-gray-600 mb-4">Enter your promo code if you have one</p>
+                    <div class="flex">
+                        <input type="text" placeholder="Promo code" class="promo-input flex-grow px-4 py-2 border border-gray-300 rounded-l focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500">
+                        <button class="promo-btn px-6 py-2 bg-gray-800 text-white rounded-r hover:bg-gray-900 transition-colors border border-gray-800">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Order Summary -->
+            <div class="lg:w-1/3">
+                <div class="bg-white rounded-lg shadow-sm p-6 sticky top-24">
+                    <h4 class="font-bold text-lg mb-6">Order Summary</h4>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Subtotal</span>
+                            <span class="font-medium">$2,497.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Shipping</span>
+                            <span class="font-medium">Free</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Tax</span>
+                            <span class="font-medium">$224.73</span>
+                        </div>
+                        <div class="flex justify-between border-t border-gray-200 pt-4 mt-2">
+                            <span class="font-bold">Total</span>
+                            <span class="font-bold text-xl">$2,721.73</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-4 rounded mt-8 transition-colors">
+                        Proceed to Checkout
+                    </button>
+                    
+                    <div class="mt-6">
+                        <h5 class="font-medium mb-2">We Accept</h5>
+                        <div class="flex space-x-2">
+                            <img src="https://via.placeholder.com/40x25?text=VISA" alt="Visa" class="h-6">
+                            <img src="https://via.placeholder.com/40x25?text=MC" alt="Mastercard" class="h-6">
+                            <img src="https://via.placeholder.com/40x25?text=AMEX" alt="American Express" class="h-6">
+                            <img src="https://via.placeholder.com/40x25?text=PP" alt="PayPal" class="h-6">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-gray-50 rounded">
+                        <h5 class="font-medium mb-2">Need Help?</h5>
+                        <p class="text-sm text-gray-600 mb-2">Contact our customer service team 24/7</p>
+                        <a href="#" class="text-pink-500 text-sm hover:underline">support@dearme.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recently Viewed -->
+        <div class="mt-16">
+            <h3 class="text-2xl font-bold mb-6">Recently Viewed</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616ac5d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Floral Summer Dress" class="w-full h-64 object-cover">
+                        <button class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white text-pink-500 px-4 py-2 rounded-full font-medium text-sm opacity-0 hover:opacity-100 transition-opacity">
+                            Quick Add
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-medium mb-1">Floral Summer Dress</h4>
+                        <p class="text-gray-600 text-sm mb-2">Dior</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-800">$899</span>
+                            <div class="flex space-x-1 text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Silk Slip Dress" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-medium mb-1">Silk Slip Dress</h4>
+                        <p class="text-gray-600 text-sm mb-2">Balenciaga</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-800">$1,199</span>
+                            <div class="flex space-x-1 text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Embroidered Maxi Dress" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">SALE</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-medium mb-1">Embroidered Maxi Dress</h4>
+                        <p class="text-gray-600 text-sm mb-2">Louis Vuitton</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-800">$1,599</span>
+                            <div class="flex space-x-1 text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Wrap Midi Dress" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-medium mb-1">Wrap Midi Dress</h4>
+                        <p class="text-gray-600 text-sm mb-2">Gucci</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-800">$1,099</span>
+                            <div class="flex space-x-1 text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-pink-500 text-white mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">Join Our Exclusive Community</h3>
+            <p class="max-w-2xl mx-auto mb-8">Subscribe to our newsletter for early access to new arrivals, private sales, and style inspiration from our fashion experts.</p>
+            
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l focus:outline-none text-gray-800">
+                <button class="bg-black text-white px-6 py-3 rounded-r hover:bg-gray-900 transition-colors">
+                    Subscribe
+                </button>
+            </div>
+            
+            <p class="text-sm mt-4 opacity-80">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-heart text-2xl text-pink-400"></i>
+                        <h4 class="text-xl font-bold">Dear Me</h4>
+                    </div>
+                    <p class="text-gray-400 mb-4">Celebrating your unique style with curated designer fashion.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Shop</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Women</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Men</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Customer Service</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Authenticity Guarantee</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold text-lg mb-4">About</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Our Story</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sustainability</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Dear Me. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <img src="https://via.placeholder.com/50x30?text=VISA" alt="Visa" class="h-8">
+                    <img src="https://via.placeholder.com/50x30?text=MC" alt="Mastercard" class="h-8">
+                    <img src="https://via.placeholder.com/50x30?text=AMEX" alt="American Express" class="h-8">
+                    <img src="https://via.placeholder.com/50x30?text=PP" alt="PayPal" class="h-8">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart Functionality
+        const cartItems = [
+            {
+                id: "1",
+                name: "Silk Evening Gown",
+                brand: "Gucci",
+                price: 1299,
+                quantity: 1,
+                size: "M",
+                color: "Black",
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80"
+            },
+            {
+                id: "3",
+                name: "Linen Midi Dress",
+                brand: "Prada",
+                price: 599,
+                originalPrice: 750,
+                quantity: 2,
+                size: "S",
+                color: "Beige",
+                image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+            }
+        ];
+        
+        // Update cart count
+        document.getElementById('cart-count').textContent = cartItems.reduce((total, item) => total + item.quantity, 0);
+        
+        // Update cart items
+        function updateCartDisplay() {
+            const cartItemsList = document.getElementById('cart-items-list');
+            const emptyCart = document.getElementById('empty-cart');
+            
+            if (cartItems.length === 0) {
+                cartItemsList.classList.add('hidden');
+                emptyCart.classList.remove('hidden');
+            } else {
+                cartItemsList.classList.remove('hidden');
+                emptyCart.classList.add('hidden');
+                
+                // Calculate totals
+                const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+                const tax = subtotal * 0.09; // 9% tax
+                const total = subtotal + tax;
+                
+                // Update order summary
+                document.querySelectorAll('.flex.justify-between')[0].lastElementChild.textContent = `$${subtotal.toFixed(2)}`;
+                document.querySelectorAll('.flex.justify-between')[2].lastElementChild.textContent = `$${tax.toFixed(2)}`;
+                document.querySelector('.text-xl').textContent = `$${total.toFixed(2)}`;
+            }
+        }
+        
+        // Initialize cart display
+        updateCartDisplay();
+        
+        // Quantity buttons
+        document.querySelectorAll('.quantity-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const itemContainer = e.target.closest('.cart-item');
+                const quantityElement = itemContainer.querySelector('.quantity-btn + span');
+                let quantity = parseInt(quantityElement.textContent);
+                
+                if (e.target.textContent === '+') {
+                    quantity += 1;
+                } else {
+                    if (quantity > 1) {
+                        quantity -= 1;
+                    }
+                }
+                
+                quantityElement.textContent = quantity;
+                
+                // Update the total for this item
+                const price = parseFloat(itemContainer.querySelector('.font-medium').textContent.replace(/[^0-9.-]+/g,""));
+                const totalElement = itemContainer.querySelectorAll('.font-medium')[2];
+                totalElement.textContent = `$${(price * quantity).toFixed(2)}`;
+                
+                // Update order summary
+                updateCartDisplay();
+            });
+        });
+        
+        // Remove item
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const itemContainer = e.target.closest('.cart-item');
+                itemContainer.remove();
+                
+                // Update cart count
+                const cartCount = document.getElementById('cart-count');
+                let count = parseInt(cartCount.textContent);
+                const quantity = parseInt(itemContainer.querySelector('.quantity-btn + span').textContent);
+                count -= quantity;
+                cartCount.textContent = count;
+                
+                // Update order summary
+                updateCartDisplay();
+                
+                // Show empty cart if needed
+                if (document.querySelectorAll('.cart-item').length === 0) {
+                    document.getElementById('cart-items-list').classList.add('hidden');
+                    document.getElementById('empty-cart').classList.remove('hidden');
+                }
+            });
+        });
+        
+        // Update cart button
+        document.getElementById('update-cart').addEventListener('click', () => {
+            // In a real implementation, this would send the updated quantities to the server
+            alert('Cart updated successfully!');
+        });
+        
+        // Apply promo code
+        document.querySelector('.promo-btn').addEventListener('click', () => {
+            const promoCode = document.querySelector('.promo-input').value;
+            if (promoCode === 'DEARME20') {
+                alert('Promo code applied! 20% discount will be applied at checkout.');
+            } else {
+                alert('Invalid promo code. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
